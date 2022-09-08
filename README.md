@@ -1,4 +1,4 @@
-# BeAMicroservice
+# Be A Microservice (BAM)
 Demonstrating several Solace PubSub+ features in a small game.
 
 ## Purposes of this demo

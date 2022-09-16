@@ -10,7 +10,7 @@ Demonstrating several Solace PubSub+ features in a small game.
 ![image](https://user-images.githubusercontent.com/24413042/189151803-6052f137-7a15-4ad6-a300-6b56df3d4b5b.png)
 
 ## Architecture briefing
-![image](https://user-images.githubusercontent.com/24413042/189151166-3cb81d61-aade-40ec-9f74-5d7ed895c543.png)
+![image](https://user-images.githubusercontent.com/24413042/190535747-742f66be-9ceb-449c-a3d1-f4d672b5704f.png)
 
 ## Roles briefing
 ![image](https://user-images.githubusercontent.com/24413042/189151314-9951a50f-32bc-4f5b-97b0-57788db58393.png)

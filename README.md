@@ -20,10 +20,10 @@ Demonstrating several Solace PubSub+ features in a small game.
 
 ## Screenshots
 - Admin panel
-![image](https://user-images.githubusercontent.com/24413042/189151572-d6e07413-eb1e-4527-a44f-2891f834898c.png)
+![image](https://user-images.githubusercontent.com/24413042/190535660-ac40f4d1-1b3e-4865-b904-39c3f09a4006.png)
 
 - Dashboard
-![image](https://user-images.githubusercontent.com/24413042/189151920-9f0acb9b-4086-4271-a213-804f517c3090.png)
+![image](https://user-images.githubusercontent.com/24413042/190535637-492b3ed6-412d-471a-8e07-01bc3e0a20b9.png)
 
 - Running on mobile devices  
 so we can invite the audiences to join us (by simply scanning an QR code), mimicking microservices.

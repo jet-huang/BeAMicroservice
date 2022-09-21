@@ -1,0 +1,34 @@
+﻿version: "3.8"
+
+services:
+  Aggregator:
+    container_name: ${PROJECT_PREFIX}aggregator
+    build:
+      context: .
+      dockerfile: Dockerfile.Aggregator
+    image: ${IMAGE_PREFIX}/aggregator:latest
+    #ports:
+      #- 38888:80
+    restart: "no"
+    environment:
+      TZ: ${TZ}
+      RuntimeConfig__exporterUrl: ${RuntimeConfig__exporterUrl}
+      RuntimeConfig__solaceConfig__hostUrl: ${RuntimeConfig__solaceConfig__hostUrl}
+      RuntimeConfig__solaceConfig__vpnName: ${RuntimeConfig__solaceConfig__vpnName}
+      RuntimeConfig__solaceConfig__userName: ${RuntimeConfig__solaceConfig__userName}
+      RuntimeConfig__solaceConfig__password: ${RuntimeConfig__solaceConfig__password}
+
+  OpenAPI:
+    container_name: ${PROJECT_PREFIX}openapi
+    build: ./OpenAPI
+    image: ${IMAGE_PREFIX}/openapi:latest
+    ports:
+      - 38888:80
+    restart: "no"
+    environment:
+      TZ: ${TZ}
+      RuntimeConfig__exporterUrl: ${RuntimeConfig__exporterUrl}
+      RuntimeConfig__solaceConfig__hostUrl: ${RuntimeConfig__solaceConfig__hostUrl}
+      RuntimeConfig__solaceConfig__vpnName: ${RuntimeConfig__solaceConfig__vpnName}
+      RuntimeConfig__solaceConfig__userName: ${RuntimeConfig__solaceConfig__userName}
+      RuntimeConfig__solaceConfig__password: ${RuntimeConfig__solaceConfig__password}

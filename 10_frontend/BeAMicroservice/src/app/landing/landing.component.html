@@ -1,0 +1,24 @@
+<div class="card bg-secondary text-center m-3">
+  <div class="card-header" *ngIf="this.isGameRunning">Join Us: <strong>{{ this.gameTitle }}</strong></div>
+  <div class="card-header" *ngIf="!this.isGameRunning"><strong>Please wait for the host...</strong></div>
+  <div class="card-body">
+    <p class="card-text">
+      <button type="button" class="btn btn-success col-6 mx-auto" (click)="onJoinButtonClick()" [disabled]="!this.isGameRunning">JOIN!</button>
+    </p>
+    <div class="alert alert-dismissible alert-warning" *ngIf="this.isJoinFailed">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <h4 class="alert-heading">Warning!</h4>
+      <p class="mb-0"> Joining game with ID {{ this.playerId }} isn't successful, you may retry with <a href="/" class="alert-link">clicking here</a> or ask help from the host.</p>
+    </div>
+  </div>
+</div>
+<div class="card text-white bg-danger m-3" *ngIf="this.isDebugEnabled">
+  <div class="card-header">DEBUG MODE</div>
+  <div class="card-body">
+    <p class="card-text">For debugging and testing only</p>
+    <button type="button" class="btn btn-dark m-1" (click)="onMyButtonClick01()">As a Requestor</button>
+    <button type="button" class="btn btn-dark m-1" (click)="onMyButtonClick02()">As a Server</button>
+    <button type="button" class="btn btn-dark m-1" (click)="onMyButtonClick03()">As a Watcher</button>
+  </div>
+</div>
+<app-footer></app-footer>

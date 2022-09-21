@@ -1,0 +1,27 @@
+<fieldset class="form-group">
+  <legend class="mt-2">Solace PubSub+</legend>
+  <div class="form-check form-switch">
+    <p>
+      <input name="switchConnect" class="form-check-input" type="checkbox" id="switchConnect"
+        (change)="onConnectSwitchChanged()" [checked]="isConnected">
+      <label class="form-check-label" for="flexSwitchCheckDefault">
+        <span *ngIf="!this.isWaiting && !this.isConnected">Click to connect</span>
+        <span *ngIf="this.isWaiting"><span class="spinner-border spinner-border-sm" role="status"
+            aria-hidden="true"></span>
+          Please wait...</span>
+        <span *ngIf="!this.isWaiting && this.isConnected">Click to disconnect</span>
+      </label>
+    </p>
+    <!--
+    <p>
+      <input name="switchOnService" class="form-check-input" type="checkbox" id="switchOnService"
+        (change)="onService()" [disabled]="!isConnected" [checked]="isOnService">
+      <label class="form-check-label" for="flexSwitchCheckDefault">
+        <span *ngIf="!this.isConnected">NOT READY</span>
+        <span *ngIf="this.isConnected && !this.isOnService">Click to receive messages</span>
+        <span *ngIf="this.isConnected && this.isOnService">Click to stop receiving messages</span>
+      </label>
+    </p>
+    -->
+  </div>
+</fieldset>

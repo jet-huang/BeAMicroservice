@@ -1,0 +1,15 @@
+{
+  "apiBaseUrl": "http://dev01.jbls.tw:38888",
+  "solace": {
+    "protocol": "ws",
+    "host": "dev01.jbls.tw",
+    "port": 8008,
+    "vpnName": "default",
+    "userName": "default",
+    "password": "default"
+  },
+  "serviceName": "DEV-BAM-frontend",
+  "exporterUrl": "http://dev01.jbls.tw:4318/v1/traces",
+  "jaegerBaseUrl": "http://dev01.jbls.tw:16686",
+  "demoBy": "Jet@Solace"
+}

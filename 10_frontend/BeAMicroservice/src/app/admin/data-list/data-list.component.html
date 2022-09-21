@@ -1,0 +1,53 @@
+<div class="card border-success m-2">
+  <div class="card-header">Players List</div>
+  <div class="card-body">
+    <h4 class="card-title">Occupied Players</h4>
+    <hr />
+    <p *ngIf="this.occupiedPlayers.length == 0">No occupied players (yet)</p>
+    <table class="table table-hover" *ngIf="this.occupiedPlayers.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Role Id</th>
+          <th scope="col">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of this.occupiedPlayers; let i = index; let even = even; let odd = odd;"
+          [ngClass]="{ 'table-light': odd, 'table-dark': even }">
+          <td>{{ (i+1) }}</td>
+          <td><a [href]="this.getTracingLink(p)" target="tracingWindow">{{ p.id }}</a></td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.roleId }}</td>
+          <td>{{ p.roleTypeDesc }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 class="card-title">Available Players</h4>
+    <hr />
+    <p *ngIf="this.availablePlayers.length == 0">No available players (yet)</p>
+    <table class="table table-hover" *ngIf="this.availablePlayers.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Role Id</th>
+          <th scope="col">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of this.availablePlayers; let i = index; let even = even; let odd = odd;"
+          [ngClass]="{ 'table-light': odd, 'table-dark': even }">
+          <td>{{ (i+1) }}</td>
+          <td>{{ p.id }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.roleId }}</td>
+          <td>{{ p.roleTypeDesc }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

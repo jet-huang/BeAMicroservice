@@ -1,0 +1,32 @@
+<div class="card border-light mb-3">
+  <div class="card-header">Dashboard: Online Clients</div>
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="playersStats.size > 0">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">PlayerId</th>
+          <th scope="col">Avg. Rate</th>
+          <th scope="col">Avg. Volume</th>
+          <th scope="col">Total Requests</th>
+          <th scope="col">Total Volume</th>
+          <th scope="col">Success</th>
+          <th scope="col">Failed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let req of playersStats | keyvalue; let i = index; let even = even; let odd = odd;"
+          [ngClass]="{ 'table-light': odd, 'table-dark': even }">
+          <td>{{ (i+1) }}</td>
+          <td><a [href]="this.getTracingLink(req.key)" target="tracingWindow">{{ req.key }}</a></td>
+          <td [@valueAnimation]="req.value.avgRate">{{ req.value.avgRate }}</td>
+          <td [@valueAnimation]="req.value.avgVolume">{{ req.value.avgVolume }}</td>
+          <td [@valueAnimation]="req.value.totalRequests">{{ req.value.totalRequests }}</td>
+          <td [@valueAnimation]="req.value.totalVolume">{{ req.value.totalVolume }}</td>
+          <td [@valueAnimation]="req.value.successRequests">{{ req.value.successRequests }}</td>
+          <td [@valueAnimation]="req.value.failedRequests">{{ req.value.failedRequests }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

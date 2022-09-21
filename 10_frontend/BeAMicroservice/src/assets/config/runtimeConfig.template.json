@@ -1,0 +1,15 @@
+{
+  "apiBaseUrl": "${API_BASE_URL}",
+  "solace": {
+    "protocol": "${SOLACE_PROTOCOL}",
+    "host": "${SOLACE_HOST}",
+    "port": "${SOLACE_PORT}",
+    "vpnName": "${SOLACE_VPN_NAME}",
+    "userName": "${SOLACE_USER_NAME}",
+    "password": "${SOLACE_PASSWORD}"
+  },
+  "serviceName": "${SERVICE_NAME}",
+  "exporterUrl": "${EXPORTER_URL}",
+  "jaegerBaseUrl": "${JAEGER_BASE_URL}",
+  "demoBy": "${DEMO_BY}"
+}

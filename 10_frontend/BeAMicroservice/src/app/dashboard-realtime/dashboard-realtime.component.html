@@ -1,0 +1,31 @@
+<div class="card text-white bg-success mb-3">
+  <div class="card-header">Dashboard: Realtime</div>
+  <div class="card-body">
+    <h4 class="card-title">REALTIME ({{ this.receivedMessages.length }})</h4>
+    <div class="overflow-auto" style="height: 300px;">
+      <table class="table table-hover" *ngIf="this.receivedMessages.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Serial</th>
+            <th scope="col">OK / NG</th>
+            <th scope="col">Volume</th>
+            <th scope="col">updated</th>
+            <th scope="col">received</th>
+            <th scope="col">diff</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stats of this.receivedMessages; let i = index; let even = even; let odd = odd;"
+            [ngClass]="{ 'table-light': odd, 'table-dark': even }">
+            <td>{{ stats.totalEvents }}</td>
+            <td>{{ stats.successEvents }} / {{ stats.failedEvents }}</td>
+            <td>{{ stats.totalVolume }}</td>
+            <td>{{ stats.updatedAt | date:'mediumTime' }}</td>
+            <td>{{ stats.receivedAt| date:'mediumTime' }}</td>
+            <td>{{ stats.timediff }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

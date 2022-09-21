@@ -1,0 +1,59 @@
+<div class="card border-info m-2">
+  <div class="card-header">{{ this.gameStatus.gameParameters?.nameWatcher }} Command Panel</div>
+  <div class="card-body">
+    <h4 class="card-title">Connect with Solace PubSub+</h4>
+    <p class="card-text"></p>
+    <fieldset class="form-group">
+      <legend class="mt-4">{{ this.gameStatus.activePlayer?.name }}<br /><small class="text-muted" style="font-size: 0.5em;">({{ this.playerId }})</small></legend>
+      <div class="form-check form-switch">
+        <p>
+          <input name="switchConnect" class="form-check-input" type="checkbox" id="switchConnect"
+            (change)="onConnectSwitchChanged()" [checked]="isConnected">
+          <label class="form-check-label" for="flexSwitchCheckDefault">
+            <span *ngIf="!this.isWaiting && !this.isConnected">Switch on to join</span>
+            <span *ngIf="this.isWaiting"><span class="spinner-border spinner-border-sm" role="status"
+                aria-hidden="true"></span>
+              Please wait...</span>
+            <span *ngIf="!this.isWaiting && this.isConnected">Switch off to take a rest</span>
+          </label>
+        </p>
+        <p>
+          <input name="switchOnService" class="form-check-input" type="checkbox" id="switchOnService"
+            (change)="onService()" [disabled]="!isConnected" [checked]="isOnService">
+          <label class="form-check-label" for="flexSwitchCheckDefault">
+            <span *ngIf="!this.isConnected">NOT READY</span>
+            <span *ngIf="this.isConnected && !this.isOnService">Switch on to serve</span>
+            <span *ngIf="this.isConnected && this.isOnService">Quiet quitting...</span>
+          </label>
+        </p>
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+<div class="card border-primary m-2">
+  <div class="card-header">Requests Status Panel</div>
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="mRequests.size > 0">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+          <th scope="col">Request ID</th>
+          <th scope="col">Data Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let req of mRequests | keyvalue; let i = index; let even = even; let odd = odd;"
+          [ngClass]="{ 'table-light': odd, 'table-dark': even }">
+          <td>{{ (i+1) }}</td>
+          <td>{{ req.value.statusText }}</td>
+          <td><button (click)="onAckClick(req.value.id)" [disabled]="(req.value.statusText == 'waiting'? true:false)">{{ this.gameStatus.gameParameters?.buttonTextWatcher }}</button></td>
+          <td>{{ req.value.id }}</td>
+          <td>{{ req.value.dataVolume }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

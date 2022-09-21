@@ -1,0 +1,114 @@
+<div class="card border-primary m-2">
+  <div class="card-header">Control Pad</div>
+  <div class="card-body row">
+    <h4 class="card-title">Commands to control the game</h4>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <form>
+            <div class="form-group">
+              <label class="form-label m-2" for="inputDefault">What's our game title?</label>
+              <input type="text" class="form-control" placeholder="Default input" id="inputDefault" name="gameTitle"
+                [(ngModel)]="this.gp.gameTitle">
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1" class="form-label m-2">How many Servers?</label>
+              <select class="form-select" id="numServers" name="numServers" [(ngModel)]="this.gp.numServers">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1" class="form-label m-2">How many Watchers?</label>
+              <select class="form-select" id="numWatchers" name="numWatchers" [(ngModel)]="this.gp.numWatchers">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="col">
+          <form>
+            <div class="form-group">
+              <label class="form-label m-2" for="inputDefault">Friendly name for Requestor:</label>
+              <input type="text" class="form-control" placeholder="Default input" id="inputDefault" name="nameRequestor"
+                [(ngModel)]="this.gp.nameRequestor">
+            </div>
+            <div class="form-group">
+              <label class="form-label m-2" for="inputDefault">Friendly name for Server:</label>
+              <input type="text" class="form-control" placeholder="Default input" id="inputDefault" name="nameServer"
+                [(ngModel)]="this.gp.nameServer">
+            </div>
+            <div class="form-group">
+              <label class="form-label m-2" for="inputDefault">Friendly name for Watcher:</label>
+              <input type="text" class="form-control" placeholder="Default input" id="inputDefault" name="nameWatcher"
+                [(ngModel)]="this.gp.nameWatcher">
+            </div>
+          </form>
+        </div>
+        <div class="col">
+          <form>
+            <div class="form-group">
+              <label class="form-label m-2" for="inputDefault">Button text for Requestor:</label>
+              <input type="text" class="form-control" placeholder="Default input" id="inputDefault"
+                name="buttonTextRequestor" [(ngModel)]="this.gp.buttonTextRequestor">
+            </div>
+            <div class="form-group">
+              <label class="form-label m-2" for="inputDefault">Button text for Server:</label>
+              <input type="text" class="form-control" placeholder="Default input" id="inputDefault"
+                name="buttonTextServer" [(ngModel)]="this.gp.buttonTextServer">
+            </div>
+            <div class="form-group">
+              <label class="form-label m-2" for="inputDefault">Button text for Watcher:</label>
+              <input type="text" class="form-control" placeholder="Default input" id="inputDefault"
+                name="buttonTextWatcher" [(ngModel)]="this.gp.buttonTextWatcher">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <div class="text-center m-3">
+            <p><button type="button" class="btn btn-success m-2 w-100" (click)="onInitGameClick()">Initialize
+                Game</button></p>
+            <p><button type="button" class="btn btn-success m-2 w-100" (click)="updatePlayersList()">Update Players
+                List</button></p>
+            <p><button type="button" class="btn btn-success m-2 w-100" (click)="onTestOccupyRoleClick()">Test
+                Occupying</button></p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 95%;">
+            <div class="mb-auto p-2 bd-highlight">&nbsp;</div>
+            <div class="p-2 bd-highlight">&nbsp;</div>
+            <div class="p-2 bd-highlight">
+              <div class="form-check form-switch">
+                <input name="switchGameStatus" class="form-check-input" type="checkbox" id="switchGameStatus"
+                  (change)="onGameStatusChange()" [checked]="isGameRunning">
+                <label class="form-check-label" for="flexSwitchCheckDefault">
+                  <span *ngIf="!this.isGameRunning">Switch on to START the game</span>
+                  <span *ngIf="this.isGameRunning">Switch off to STOP the game</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

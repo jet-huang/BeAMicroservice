@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:     
+  bam-frontend:
+    container_name: ${PROJECT_PREFIX}bam-frontend
+    build: ./BeAMicroservice
+    image: ${IMAGE_PREFIX}bam-frontend:latest
+    ports:
+      - 8805:80
+    restart: "no"
+    environment:
+      TZ: ${TZ}
+      SERVICE_NAME: ${SERVICE_NAME}
+      API_BASE_URL: ${API_BASE_URL}
+      SOLACE_PROTOCOL: ${SOLACE_PROTOCOL}
+      SOLACE_HOST: ${SOLACE_HOST}
+      SOLACE_PORT: ${SOLACE_PORT}
+      SOLACE_VPN_NAME: ${SOLACE_VPN_NAME}
+      SOLACE_USER_NAME: ${SOLACE_USER_NAME}
+      SOLACE_PASSWORD: ${SOLACE_PASSWORD}
+      EXPORTER_URL: ${EXPORTER_URL}
+      JAEGER_BASE_URL: ${JAEGER_BASE_URL}
+      DEMO_BY: ${DEMO_BY}

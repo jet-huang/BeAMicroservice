@@ -96,6 +96,8 @@ docker-compose up --build -d
 - Set up runtime configuration with .env  
 You must have a valid .env to make sure settings there are correct for your environment.
 
+If you follow the instruction, then the value of "API_BASE_URL" should be __"http://[YOUR_IP]:38888"__
+
 ```shell
 # Clone from env.sample
 cp .env.sample .env

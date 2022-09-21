@@ -61,10 +61,10 @@ chmod 777 badger
 chmod 777 solace-volume
 ```
 
-- Configure otel collector 
+- Configure otel collector  
 Edit otel-collector-config.yaml to make sure "cors" section listing correct host/ip addresses.
 
-- Run the containers
+- Run the containers  
 You may check .env and solace_config_keys.env to make sure settings there are correct for your environment.
 ```shell
 docker-compose up -d
@@ -80,9 +80,8 @@ docker exec -it $SOLBROKER /usr/sw/loads/currentload/bin/cli -A -es /cliscripts/
 ```
 
 ### 05_backend
-- Set up runtime configuration with .env
+- Set up runtime configuration with .env  
 You must have a valid .env to make sure settings there are correct for your environment.
-
 ```shell
 # Clone from env.sample
 cp .env.sample .env
@@ -94,7 +93,7 @@ docker-compose up --build -d
 ```
 
 ### 10_frontend
-- Set up runtime configuration with .env
+- Set up runtime configuration with .env  
 You must have a valid .env to make sure settings there are correct for your environment.
 
 ```shell

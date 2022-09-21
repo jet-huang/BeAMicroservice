@@ -39,10 +39,10 @@ builder.Services.AddCors(options => {
         });
 });
 builder.Services.AddSingleton<PSPMessagingService>(x => {
-    var sConfig = builder.Configuration.GetSection("solace");
+    // var sConfig = builder.Configuration.GetSection("solace");
     return new PSPMessagingService(
-        sConfig.GetValue<string>("hostUrl"), sConfig.GetValue<string>("vpnName"),
-        sConfig.GetValue<string>("userName"), sConfig.GetValue<string>("password")
+        runtimeConfig.solaceConfig.hostUrl, runtimeConfig.solaceConfig.vpnName,
+        runtimeConfig.solaceConfig.userName, runtimeConfig.solaceConfig.password
     );
 });
 

@@ -41,7 +41,8 @@ Go to each directory in order to run all containers needed for this demo.
 
 ### 00_solace-dt-dev
 - DOWNLOAD required images from:
-https://filedrop.solace.com/support/bucket/Distributed_Tracing_EA/
+
+https://filedrop.solace.com/support/bucket/Distributed_Tracing_EA/tracing-ea.tar.gz
 
 - Extract and load them
 ```shell

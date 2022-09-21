@@ -10,11 +10,6 @@ exporters:
     tls:
       insecure: true
 
-  otlp/aspecto:
-      endpoint: otelcol.aspecto.io:4317
-      headers:
-        Authorization: b345a3c1-135e-4eef-8743-742cebf46295
-
 receivers:
   otlp:
     protocols:
@@ -25,8 +20,6 @@ receivers:
           allowed_origins:
             - http://localhost:14200
             - http://localhost:4200
-            - https://solace-demo.mooo.com
-            - https://demo.jbls.vip
           allowed_headers:
             - "*"
 
@@ -51,4 +44,4 @@ service:
     traces:
       receivers: [solace,otlp]
       processors: [batch]
-      exporters: [jaeger,logging,otlp/aspecto]
+      exporters: [jaeger,logging]

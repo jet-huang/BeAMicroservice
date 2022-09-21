@@ -39,7 +39,7 @@ so we can invite the audiences to join us (by simply scanning an QR code), mimic
 ## How to run it locally
 Go to each directory in order to run all containers needed for this demo.
 
-### 00_solace-dt-dev
+### BEFORE YOU START
 - DOWNLOAD required images from:
 
 https://filedrop.solace.com/support/bucket/Distributed_Tracing_EA/tracing-ea.tar.gz
@@ -51,9 +51,10 @@ cd tracing-ea
 docker load --input solace-pubsub-standard-100.0distributed_tracing_1_1.0.261-docker.tar.gz
 docker load --input opentelemetry-collector-contrib-docker.tar.gz
 ```
+
+### 00_solace-dt-dev
 - Initialize
 ```shell
-cd solace-dt-dev
 mkdir -p badger
 mkdir -p solace-volume
 chmod 777 badger

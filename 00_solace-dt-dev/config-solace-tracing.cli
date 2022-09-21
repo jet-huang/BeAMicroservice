@@ -1,0 +1,34 @@
+home
+enable
+configure
+
+! Configure telemetry client-profile
+configure
+message-vpn default
+create telemetry-profile trace 
+receiver acl connect default-action allow
+no receiver shutdown
+trace
+no shutdown
+create filter default
+no shutdown
+create subscription ">"
+end
+
+! Configure telemetry client-username
+configure
+create client-username trace message-vpn default
+password trace
+client-profile #telemetry-trace
+acl-profile #telemetry-trace
+no shutdown
+end
+
+! Configure a queue for testing
+configure
+message-spool message-vpn default
+create queue q
+permission all delete
+subscription topic solace/tracing
+no shutdown
+end

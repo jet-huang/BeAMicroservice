@@ -1,0 +1,68 @@
+version: '3.5'
+
+services:
+  # Jaeger
+  jaeger-all-in-one:
+    container_name: dt-dev_jaeger-all-in-one
+    image: jaegertracing/all-in-one:latest
+    volumes:
+      - $PWD/badger:/badger
+    ports:
+      - "16686:16686"
+      - "14268"
+      - "14250"
+      - "6831:6831/udp"
+    environment:
+      - SPAN_STORAGE_TYPE=badger
+      - BADGER_EPHEMERAL=false
+      - BADGER_DIRECTORY_VALUE=/badger/data
+      - BADGER_DIRECTORY_KEY=/badger/key
+
+  # Collector
+  otel-collector:
+    container_name: dt-dev_otel-collector
+    image: ${OTELCOL_IMG}
+    command: ["--config=/etc/otel-collector-config.yaml", "${OTELCOL_ARGS}"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "1888:1888"   # pprof extension
+      - "8888:8888"   # Prometheus metrics exposed by the collector
+      - "8889:8889"   # Prometheus exporter metrics
+      - "13133:13133" # health_check extension
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP gRPC receiver
+      - "55679:55679" # zpages extension
+    depends_on:
+      - jaeger-all-in-one
+      - solbroker
+
+
+  solbroker:
+    container_name: dt-dev_solbroker
+    image: solace-pubsub-standard:$PUBSUB_TAG
+    hostname: $PUBSUB_HOSTNAME
+    volumes:
+      - $PWD/solace-volume:/var/lib/solace:rw
+    env_file:
+      - ./solace_config_keys.env
+    ports:
+      - "2222:2222"
+      - "8080:8080"
+      - "55003:55003"
+      - "55443:55443"
+      - "55445:55445"
+      - "${PUBSUB_PORT_NUMBER}:55555"
+      - "55556:55556"
+      - "5671:5671"
+      - "5672:5672"
+      - "5550:5550"
+      - "1943:1943"
+      - "8008:8008"
+      - "1883:1883"
+    shm_size: 2g
+    ulimits:
+      memlock: -1
+      nofile:
+        soft: 2448
+        hard: 42192

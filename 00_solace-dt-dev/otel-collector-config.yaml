@@ -1,0 +1,54 @@
+processors:
+  batch:
+
+exporters:
+  logging:
+    loglevel: "debug"
+
+  jaeger:
+    endpoint: jaeger-all-in-one:14250
+    tls:
+      insecure: true
+
+  otlp/aspecto:
+      endpoint: otelcol.aspecto.io:4317
+      headers:
+        Authorization: b345a3c1-135e-4eef-8743-742cebf46295
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+        include_metadata: true
+        cors:
+          allowed_origins:
+            - http://localhost:14200
+            - http://localhost:4200
+            - https://solace-demo.mooo.com
+            - https://demo.jbls.vip
+          allowed_headers:
+            - "*"
+
+  solace:
+    broker: [solbroker:5672]
+    max_unacknowledged: 500
+    auth:
+      sasl_plain:
+        username: trace
+        password: trace
+    queue: queue://#telemetry-trace
+    tls:
+      insecure: true
+      insecure_skip_verify: true
+
+
+service:
+  telemetry:
+    logs:
+      level: "debug"
+  pipelines:
+    traces:
+      receivers: [solace,otlp]
+      processors: [batch]
+      exporters: [jaeger,logging,otlp/aspecto]

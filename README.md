@@ -144,6 +144,8 @@ You should be able to see a "JOIN" button with disabled state.
     - Watcher role is responsible for keeping service quality so if it receives requests, then we should "notify" requestor role to understand its requests are "failed".
     - If Server/Watcher cannot process/notify requestor over 16 seconds, the request will be marked as "timedout" (and requestor role has the reason to be angry ^_^||)
 
+![image](https://user-images.githubusercontent.com/24413042/191642519-03069eac-5d33-4214-a85e-ad5d4c13a2ce.png)
+
 9. While the game is running, we can see aggregated statistics in dashboard. Aggregated statistics will be delivered with 3 trasfer types (and we can check "diff" column to explain those differences):
     - Realtime
     - Elided

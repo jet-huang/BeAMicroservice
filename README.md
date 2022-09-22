@@ -109,6 +109,8 @@ docker-compose up --build -d
 ```
 
 After all containers are running, check with "docker ps" to make sure there are 6 containers running.
+![image](https://user-images.githubusercontent.com/24413042/191641358-79d55cf5-6aaf-421c-ad96-0834d48a64e8.png)
+
 
 ## How to show this demo (locally in your computer)
 1. Access Admin Panel with:  
@@ -116,6 +118,8 @@ http://[YOUR_IP]:8805/admin
 then configure game parameters in Admin Panel.  
 For running locally, I suggest __1__ servers/ __1__ watchers should be a good start.  
 However, if we want to involve our audiences, then we may consider the number of audiences and set up suitable capacity for each role. Usually __40%__ servers/__20%__ watchers/__40%__ requestors is suitable. 
+![image](https://user-images.githubusercontent.com/24413042/191641457-9c482612-42f9-43e0-b96f-c48d24f5bb60.png)
+
 
 2. Leave the game as disabled in Admin Panel.
 
@@ -145,9 +149,17 @@ You should be able to see a "JOIN" button with disabled state.
     - Elided
     - Delayed  
 
-10. After firing some requests, you can also check "Players' Stats". We can see who is the slowest/laziest microservices there. Investigate with clicking their "PlayerId" to open Jaeger UI for more details.
+![image](https://user-images.githubusercontent.com/24413042/191641713-f4cabb7f-3515-4a7c-8294-78cabeb401e2.png)
+
+![image](https://user-images.githubusercontent.com/24413042/191641751-5025abe6-aaa7-42c5-a051-8f4afb133eb7.png)
+
+10. After firing some requests, you can also check "Players' Stats". We can see who is the slowest/laziest microservices there. Investigate with clicking their "PlayerId" to open Jaeger UI for more details.  
+![image](https://user-images.githubusercontent.com/24413042/191641986-e3e68894-9db0-4c63-92d7-b38fcfcdc572.png)
 
 11. In Jaeger UI, we can see several traces there then we can explain how useful an end-to-end tracing is. _(currently Solace broker doesn't support context propagation yet, but we can manually inject/extract trace id and transfer them with user properties in SMF)_
+![image](https://user-images.githubusercontent.com/24413042/191642021-541568d5-674c-4ad4-bf53-d04369579c3a.png)
+
+![image](https://user-images.githubusercontent.com/24413042/191642146-ca693c22-8c97-4573-9057-57c360b99fe6.png)
 
 ## How to involve our audiences
 Most important of all, we need some "public accessible" URLs for running this demo on Internet, therefore we can invite our customers/prospects to experience Solace features physically. Besides, there are some additional steps we should take:

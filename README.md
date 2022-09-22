@@ -113,23 +113,32 @@ After all containers are running, check with "docker ps" to make sure there are 
 
 
 ## How to show this demo (locally in your computer)
-1. Access Admin Panel with:  
-http://[YOUR_IP]:8805/admin  
-then configure game parameters in Admin Panel.  
-For running locally, I suggest __1__ servers/ __1__ watchers should be a good start.  
-However, if we want to involve our audiences, then we may consider the number of audiences and set up suitable capacity for each role. Usually __40%__ servers/__20%__ watchers/__40%__ requestors is suitable. 
+1. Access Admin Panel with:
+    ```  
+    http://[YOUR_IP]:8805/admin  
+    ```
+    then configure game parameters in Admin Panel.
+
+    For running locally, I suggest __1__ servers/ __1__ watchers should be a good start.
+
+    However, if we want to involve our audiences, then we may consider the number of audiences and set up suitable capacity for each role. Usually __40%__ servers/__20%__ watchers/__40%__ requestors is suitable. 
+
 ![image](https://user-images.githubusercontent.com/24413042/191641457-9c482612-42f9-43e0-b96f-c48d24f5bb60.png)
 
 
 2. Leave the game as disabled in Admin Panel.
 
-3. Open Dashboard Panel with:  
-http://[YOUR_IP]:8805/dashboard  
+3. Open Dashboard Panel with:
+    ```  
+    http://[YOUR_IP]:8805/dashboard  
+    ```
 Switch on to connect to Solace.
 
 4. Open 3 browsers (we may also use phone/tablet as well), navigate to:  
-http://[YOUR_IP]:8805  
-You should be able to see a "JOIN" button with disabled state.
+    ```
+    http://[YOUR_IP]:8805  
+    ```
+    You should be able to see a "JOIN" button with disabled state.
 
 5. Go back to Admin Panel, start (enable) the game.
 
@@ -156,9 +165,11 @@ You should be able to see a "JOIN" button with disabled state.
 ![image](https://user-images.githubusercontent.com/24413042/191641751-5025abe6-aaa7-42c5-a051-8f4afb133eb7.png)
 
 10. After firing some requests, you can also check "Players' Stats". We can see who is the slowest/laziest microservices there. Investigate with clicking their "PlayerId" to open Jaeger UI for more details.  
+
 ![image](https://user-images.githubusercontent.com/24413042/191641986-e3e68894-9db0-4c63-92d7-b38fcfcdc572.png)
 
 11. In Jaeger UI, we can see several traces there then we can explain how useful an end-to-end tracing is. _(currently Solace broker doesn't support context propagation yet, but we can manually inject/extract trace id and transfer them with user properties in SMF)_
+
 ![image](https://user-images.githubusercontent.com/24413042/191642021-541568d5-674c-4ad4-bf53-d04369579c3a.png)
 
 ![image](https://user-images.githubusercontent.com/24413042/191642146-ca693c22-8c97-4573-9057-57c360b99fe6.png)

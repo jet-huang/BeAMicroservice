@@ -41,7 +41,8 @@ so we can invite the audiences to join us (by simply scanning an QR code), mimic
 ![image](https://user-images.githubusercontent.com/24413042/189153555-6a79efe6-935c-4075-97af-f7b8fcc1f1fa.png)
 
 ## How to run it locally
-Go to each directory in order to run all containers needed for this demo.
+- Clone this repository.
+- Go to each directory sequentially to run all containers needed for this demo.
 
 ### BEFORE YOU START
 - DOWNLOAD required images from:
@@ -64,9 +65,6 @@ mkdir -p solace-volume
 chmod 777 badger
 chmod 777 solace-volume
 ```
-
-- Configure otel collector  
-Edit otel-collector-config.yaml to make sure "cors" section listing correct host/ip addresses.
 
 - Run the containers  
 You may check .env and solace_config_keys.env to make sure settings there are correct for your environment.
@@ -123,7 +121,7 @@ After all containers are running, check with "docker ps" to make sure there are 
     ```
     then configure game parameters in Admin Panel.
 
-    For running locally, I suggest __1__ servers/ __1__ watchers should be a good start.
+    For running locally, I suggest __1__ server/ __1__ watcher should be a good start.
 
     However, if we want to involve our audiences, then we may consider the number of audiences and set up suitable capacity for each role. Usually __40%__ servers/__20%__ watchers/__40%__ requestors is suitable. 
 

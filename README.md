@@ -1,5 +1,9 @@
 # Be A Microservice (BAM)
-Demonstrating several Solace PubSub+ features in a small game.
+Build a microservice,  
+_or_  
+Be Part of One?
+
+This repository contains a demo to show several fascinating Solace PubSub+ features in a small game.
 
 ## Introduction
 ### Purposes of this demo

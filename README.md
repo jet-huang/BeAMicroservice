@@ -107,3 +107,62 @@ cp .env.sample .env
 ```shell
 docker-compose up --build -d
 ```
+
+After all containers are running, check with "docker ps" to make sure there are 6 containers running.
+
+## How to show this demo (locally in your computer)
+1. Access Admin Panel with:  
+http://[YOUR_IP]:8805/admin  
+then configure game parameters in Admin Panel.  
+For running locally, I suggest __1__ servers/ __1__ watchers should be a good start.  
+However, if we want to involve our audiences, then we may consider the number of audiences and set up suitable capacity for each role. Usually __40%__ servers/__20%__ watchers/__40%__ requestors is suitable. 
+
+2. Leave the game as disabled in Admin Panel.
+
+3. Open Dashboard Panel with:  
+http://[YOUR_IP]:8805/dashboard  
+Switch on to connect to Solace.
+
+4. Open 3 browsers (we may also use phone/tablet as well), navigate to:  
+http://[YOUR_IP]:8805  
+You should be able to see a "JOIN" button with disabled state.
+
+5. Go back to Admin Panel, start (enable) the game.
+
+6. Now you should see "JOIN" is enabled in the 3 browsers, just click "JOIN" and backend will assign a role to that player (browser).
+
+7. Switch on the conncection to Solace on all players. Also, do __NOT__ forget to switch on service in Server/Watcher roles.
+
+8. Send requests from Requestor role and reply with Server/Watcher role.
+    - Server role will access some 3rd party API while you "process" each request (by clicking the button). This may cause some delay and some failures. (Let's trace them with DT!)
+    - Each server role is throttled if there are more than 9 requests waiting for processing.
+    - If some requests waiting in the queue more than 8 seconds, they will be moved to Watcher's queue.
+    - Watcher role is responsible for keeping service quality so if it receives requests, then we should "notify" requestor role to understand its requests are "failed".
+    - If Server/Watcher cannot process/notify requestor over 16 seconds, the request will be marked as "timedout" (and requestor role has the reason to be angry ^_^||)
+
+9. While the game is running, we can see aggregated statistics in dashboard. Aggregated statistics will be delivered with 3 trasfer types (and we can check "diff" column to explain those differences):
+    - Realtime
+    - Elided
+    - Delayed  
+
+10. After firing some requests, you can also check "Players' Stats". We can see who is the slowest/laziest microservices there. Investigate with clicking their "PlayerId" to open Jaeger UI for more details.
+
+11. In Jaeger UI, we can see several traces there then we can explain how useful an end-to-end tracing is. _(currently Solace broker doesn't support context propagation yet, but we can manually inject/extract trace id and transfer them with user properties in SMF)_
+
+## How to involve our audiences
+Most important of all, we need some "public accessible" URLs for running this demo on Internet, therefore we can invite our customers/prospects to experience Solace features physically. Besides, there are some additional steps we should take:
+
+- Generating QR code for frontend's URL.
+- Before starting the demo, show architecture and brief 3 roles which our audiences will play.
+- Ask our audiences to prepare their QR code reader (usually their phones) in step 4. 
+- We may quickly introduce each part of the dashboard panel. _(Don’t forget switch on “Connect to Solace” to receive stats from the broker)_
+- Show QR code and ask them to scan.
+- Once most of customers have scanned, enable the game, then prompt them click “JOIN” to join the game.
+- Remind them to connect and send requests/reply requests.
+
+## Todo
+- Refine RWD in player panel.
+- Replay.
+- Tuning once context propagation is available in PS+ broker.
+- Integration with 3rd party monitoring.
+- More gamification

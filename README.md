@@ -44,19 +44,6 @@ so we can invite the audiences to join us (by simply scanning an QR code), mimic
 - Clone this repository.
 - Go to each directory sequentially to run all containers needed for this demo.
 
-### BEFORE YOU START
-- DOWNLOAD required images from:
-
-https://filedrop.solace.com/support/bucket/Distributed_Tracing_EA/tracing-ea.tar.gz
-
-- Extract and load them
-```shell
-tar -xf tracing-ea.tar.gz
-cd tracing-ea
-docker load --input solace-pubsub-standard-100.0distributed_tracing_1_1.0.261-docker.tar.gz
-docker load --input opentelemetry-collector-contrib-docker.tar.gz
-```
-
 ### 00_solace-dt-dev
 - Initialize
 ```shell
